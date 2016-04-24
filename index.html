@@ -5,31 +5,72 @@
     function getRating() {
         var param = document.getElementById("query").value;
         var res = contracts["Rating"].contract.ratings(param);
-        document.getElementById("queryres").innerText = res;
-    }12
+        document.getElementById("queryres2").innerText = res;
+    }
 
     function setRating() {
         var key = document.getElementById("key").value;
         var value = parseInt(document.getElementById("value").value);
        
 		
-	 /// To DO	NGB - Get Customer Name from 
-		//NBG reurned Name_From_Bank
+	 /// NBG Module 
+		//
+		      
+//        $.ajax({
+//            url: "https://nbgdemo.azure-api.net/nodeopenapi/api/customers/rest?" + $.param(params),
+//            beforeSend: function(xhrObj){
+//                // Request headers
+//                xhrObj.setRequestHeader("Content-Type","application/json");
+//                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","b61a31d0e1d041f2a487b188a778bf32");
+//            },
+//            type: "POST",
+//            // Request body
+//            data: "{
+
+//  "nbgtrackid": "571a162f95806d5414110f20",
+
+//  "payload": {
+
+//    "customer_number": "571a162f95806d5414110f20" 
+
+ 
+
+//  }
+
+//}",
+//        })
+//        .done(function(data) {
+//            alert("success");
+//alert(data);
+
+//        })
+//        .fail(function() {
+//            alert("error");
+//        });
+//    });
+ /// NBG Module 		
+		
+		///Block NBG Emulation - where emulates the nbg module above and
+		//key is the inputfrom the credit card scanner at POS and Name_From_Bank is the return name of credit card
+		//owner that NBG Module returns
 	 
  
 		 var Name_From_Bank 
 	  if( key ==  "571c9801db45021c1aebeec0" )
 		  {  Name_From_Bank = "Petropoulos" }
-		
+
+		if( key ==  "571c9801db45021c1aebeec2" )
+		  {  Name_From_Bank = "Leonidas Fragkiadakis" }
 		 
-		  
+		  //End 
 		  
 		  
 		  
 		////
    var old_value = contracts["Rating"].contract.ratings(Name_From_Bank);
 		value = parseInt(old_value) + parseInt(value);
-		
+		document.getElementById("queryname").innerText = Name_From_Bank;
+		document.getElementById("queryres").innerText = value;
        var res = contracts["Rating"].contract.setRating(Name_From_Bank, value);
     }
     </script>
@@ -46,9 +87,22 @@
             <button onclick="setRating()">Add Points</button>
         </div>
         <div>
-            Show Customer's Points:
-            <input type="string" id="query" onkeyup='getRating()'>
-            <div id="queryres"></div>
+
+				<br/>
+			
+            
+			<b>Mr  <div id="queryname"></div>
+			has now<div id="queryres"></div> Points </b>
+            
+			
+			
+						<br/><br/><br/>
+			Search customer points:
+			<br/>
+            Enter Customer name:
+			<input type="string" id="query" onkeyup='getRating()'>
+			<div id="queryres2"></div>
+			<br/>
         </div>
     </body>
     </html>
