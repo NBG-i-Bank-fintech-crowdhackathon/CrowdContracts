@@ -1,0 +1,54 @@
+<!doctype>
+    <html>
+    <head>
+    <script type="text/javascript">
+    function getRating() {
+        var param = document.getElementById("query").value;
+        var res = contracts["Rating"].contract.ratings(param);
+        document.getElementById("queryres").innerText = res;
+    }12
+
+    function setRating() {
+        var key = document.getElementById("key").value;
+        var value = parseInt(document.getElementById("value").value);
+       
+		
+	 /// To DO	NGB - Get Customer Name from 
+		//NBG reurned Name_From_Bank
+	 
+ 
+		 var Name_From_Bank 
+	  if( key ==  "571c9801db45021c1aebeec0" )
+		  {  Name_From_Bank = "Petropoulos" }
+		
+		 
+		  
+		  
+		  
+		  
+		////
+   var old_value = contracts["Rating"].contract.ratings(Name_From_Bank);
+		value = parseInt(old_value) + parseInt(value);
+		
+       var res = contracts["Rating"].contract.setRating(Name_From_Bank, value);
+    }
+    </script>
+    </head>
+    <body bgcolor="#E6E6FA">
+        <h1>Loyalty Program Points</h1>
+        <div>
+            Customer Card:
+            <input type="text" id="key">
+			<br/>
+			Customer Points:
+            <input type="number" id="value">
+			<br/>
+            <button onclick="setRating()">Add Points</button>
+        </div>
+        <div>
+            Show Customer's Points:
+            <input type="string" id="query" onkeyup='getRating()'>
+            <div id="queryres"></div>
+        </div>
+    </body>
+    </html>
