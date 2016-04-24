@@ -15,6 +15,8 @@ Within the IDE's web browser, you can enter a new or existing customer card numb
 For each loyalty point change, an Ethereum blockchain smart contract transaction is generated (visible on the right window pane).
 The blockchain tracks any changes to the customer's points using smart contracts. Effectively it serves as a public decentralized database.
 
+The frontend code is supposed to use NBG bank API but due to compatibility problems/bugs with Mix-IDE, we were forced to hardcode the customer's data. (The code was working using a normal browser).
+
 
 Useful links:
 https://www.ethereum.org/cli
